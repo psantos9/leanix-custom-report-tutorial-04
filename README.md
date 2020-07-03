@@ -1,6 +1,6 @@
-# Tutorial 03: designing a matrix report
+# Tutorial 04: implementing a matrix-layout custom report
 
-Tutorial on how to design a matrix-layout tutorial
+Tutorial on how to implement a matrix-layout custom report
 
 ## Table of Contents
 
