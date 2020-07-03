@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="application-name" content="leanix-custom-report-tutorial-04">
+  <meta name="description" content="Tutorial on how to design a matrix-layout tutorial">
+  <meta name="author" content="%author%">
+
+  <title>Tutorial 04: designing a matrix report</title>
+  <style>
+    [x-cloak] { display: none; }
+  </style>
+</head>
+<body
+  x-data="initializeContext()"
+  x-init="() => {
+    initializeReport()
+    fetchLifecyclePhases()
+    $watch('lifecyclePhases', () => computeGridRows())
+    $watch('applications', () => computeGridRows())
+  }">
+  <div x-cloak class="container mx-auto h-screen text-xs">
+    <div class="flex flex-col items-center h-full overflow-hidden">
+      <div class="grid border-b border-r" :style="gridStyle">
+        <template
+          x-for="cell in headerRow"
+          :key="cell.key">
+          <div
+            x-text="cell.label"
+            :class="cell.classes || ''"
+            :style="cell.style"></div>
+        </template>
+      </div>
+      <div class="h-full overflow-y-auto overflow-x-hidden" >
+        <template
+          x-for="(row, rowIdx) in rows"
+          :key="rowIdx">
+          <div
+            class="grid border-r border-l hover:bg-gray-100 transition-colors duration-150 ease-in-out"
+            :style="gridStyle">
+            <template
+              x-for="cell in row"
+              :key="cell.key">
+              <div
+                class="text-center border-r border-b"
+                :class="cell.classes || ''"
+                :style="cell.style || ''"
+                x-text="cell.label"
+                @click="applicationClickEvtHandler(cell)">
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

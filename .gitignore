@@ -1,0 +1,4 @@
+lxr.json
+dist/
+node_modules/
+*.tgz
