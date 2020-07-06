@@ -298,10 +298,10 @@ Now launching the development server, and opening our browsers console, we can s
   <img  src="https://i.imgur.com/XRBIYSB.png">
 </div>
 
-Success! The **fetchLifecyclePhases** method in indeed being triggered upon the loading of the report and we have now the missing information for building our matrix-layout report that was the lifecycle phases defined in our workspace.
+Success! We observed that the **fetchLifecyclePhases** method is indeed being triggered upon the loading of the report and, therefore, we have now the missing information for building our matrix-layout report columns.
 
 As we mentioned previously, our matrix report will have one column for the application name, and one to each lifecycle phase defined in our workspace, thus 6 columns in total.
-Our next job in this tutorial will be to create a method that maps our application list into a set of matrix rows to be rendered in our matrix-layout report.
+Our next job in this tutorial will be to create a method that maps our application list into a set of matrix rows to be rendered in our report.
 
 Edit the **index.js** file and add three new state variables - **headerRow**, **rows** and **gridStyle**, and the **computeRows** method as follows:
 
