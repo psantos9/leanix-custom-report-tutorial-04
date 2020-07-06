@@ -65,7 +65,7 @@ const methods = {
       })
     this.lifecyclePhases = lifecyclePhases
   },
-  computeGridRows () {
+  computeRows () {
     const lifecycleColumnKeys = this.lifecyclePhases.map(({ key }) => key)
 
     this.headerRow = this.lifecyclePhases

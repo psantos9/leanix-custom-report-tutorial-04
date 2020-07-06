@@ -18,8 +18,8 @@
   x-init="() => {
     initializeReport()
     fetchLifecyclePhases()
-    $watch('lifecyclePhases', () => computeGridRows())
-    $watch('applications', () => computeGridRows())
+    $watch('lifecyclePhases', () => computeRows())
+    $watch('applications', () => computeRows())
   }">
   <div x-cloak class="container mx-auto h-screen text-xs">
     <div class="flex flex-col items-center h-full overflow-hidden">
