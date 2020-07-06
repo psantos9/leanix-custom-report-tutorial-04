@@ -422,7 +422,7 @@ const methods = {
 }
 ```
 
-And voilá! Since all the business logic of our report is in place, we can now proceed to the second part of this tutorial where we visualize the results in form of a matrix.
+And voilá! Now that we have all the business logic of our report in place, we can now proceed to the second part of this tutorial where we visualize the results in form of a matrix.
 
 
 ### Visualizing the results
