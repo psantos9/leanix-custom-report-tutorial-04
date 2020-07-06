@@ -426,7 +426,7 @@ And voilá! Now that we have all the business logic of our report in place, we c
 
 
 ### Visualizing the results
-In order to visualize our application lifecycle matrix, and since we have the data fetching business logic in place, all we need to do is to adjust the **body** tag of our **index.html** file according the following template:
+In order to visualize our application lifecycle matrix all we need to do is to adjust the **body** tag of our **index.html** file according the following template:
 
 ```html
 <html>
