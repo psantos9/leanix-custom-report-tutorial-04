@@ -398,7 +398,7 @@ We want to compute the rows automatically whenever the lifecycle phase list is f
 </body>
 ```
 
-If you observe the development console of your browser while reloading the report, you'll notice now the contents of the **headerRow** and the **rows** being shown after the report loads, on on every time the facet filter data changes.
+If you observe the development console of your browser while reloading the report, you'll notice now the contents of the **headerRow** and the **rows** being shown after the report loads, and on every time the facet filter data changes as well.
 
 <div style="display:flex; justify-content:center">
   <img  src="https://i.imgur.com/wfO4st6.png">
