@@ -65,6 +65,7 @@ After installing the dependencies, we modify the *webpack.config.js* file and in
  We then clean up our project source code by deleting the unnecessary files:
 -  *src/report.js*
 -  *src/fact-sheet-mapper.js*
+-  *src/assets/\**
 
 Next we create a *postcss.config.js* file in the *src* folder, with the following content:
 ```javascript
