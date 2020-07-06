@@ -153,7 +153,7 @@ We want to implement a matrix-layout report which will show a list of applicatio
 We'll divide our report implementation into two parts: querying the workspace data and visualizing the results.
 
 ### Querying the workspace data
-In order to build our application lifecycle matrix, we'll fetch from our workspace a list of applications using the [facet filter data fetching interface](https://leanix.github.io/leanix-reporting/interfaces/lxr.reportfacetsconfig.html) provided by the [leanix-reporting api](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html). We would like also to store the **baseUrl** of our workspace in a state variable, so that we can navigate later into the applications using our custom report.
+In order to build our application lifecycle matrix, we'll fetch from our workspace a list of applications using the [facet filter data fetching interface](https://leanix.github.io/leanix-reporting/interfaces/lxr.reportfacetsconfig.html) provided by the [leanix-reporting api](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html). We would like also to store the **baseUrl** of our workspace in a state variable, so that we can navigate later into the applications by clicking on them.
 In order to do so, we'll include our **index.js** file two state variables, **baseUrl** and **applications**, and rewrite the **initializeReport** method as indicated below:
 
 ```javascript
@@ -202,7 +202,7 @@ window.initializeContext = () => {
 }
 ```
 
-In order to take a peek at the application list that fetch from our workspace, we'll change the **body** tag of our *index.html* file as follows:
+In order to take a peek at the application list that is being fetch from our workspace, we'll change the **body** tag of our *index.html* file as follows:
 
 ```html
   <body x-data="initializeContext()" x-init="initializeReport()">
@@ -224,7 +224,7 @@ Your report should now be showing a list of application names and the current li
 
 Notice that this list is filterable, and it gets updated as soon as you set a new filtering criteria in the report facet.
 
-Altough the list looks interesting, it is not however a matrix-view we aim to implement. Our matrix will have as columns the application name, and the set of lifecycle phases defined in our workspace. As we don't know yet what is the set of lifecycle phases defined in our workspace, we'll have to fetch this information as a graphql query using the [lx.executeGraphQL](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html#executegraphql) method provided by the [leanix-reporting api](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html). We'll also fetch the color metadata defined for each lifecycle phase in our workspace.
+Altough the list looks interesting, it is not however the matrix-view we aim to implement. Our matrix will have as columns the application name, and the set of lifecycle phases defined in our workspace. As we don't know yet which set is this of lifecycle phases that are defined in our workspace, we'll have to fetch the information as a graphql query using the [lx.executeGraphQL](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html#executegraphql) method provided by the [leanix-reporting api](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html). We'll also fetch the color metadata defined for each lifecycle phase in our workspace.
 So edit our **index.js** file and add the **lifecyclePhases** state variable to the **state** object, and the **fetchLifecyclePhases** method to the **methods** object as ilustrated below:
 
 ```javascript
