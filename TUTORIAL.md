@@ -69,6 +69,7 @@ After installing the dependencies, we modify the *webpack.config.js* file and in
 
 Next we create a *postcss.config.js* file in the *src* folder, with the following content:
 ```javascript
+// postcss.config.js
 module.exports = {
   plugins: [
     require('tailwindcss'),
@@ -78,13 +79,14 @@ module.exports = {
 ```
 
 Your project folder should look now like this:
-<div  style="display:flex; justify-content:center">
-<img  src="https://i.imgur.com/ol8RwCA.png">
+<div style="display:flex; justify-content:center">
+<img src="https://i.imgur.com/ol8RwCA.png">
 </div>
 
 Afterwards, edit the *index.js* file as follows, including the [Alpine JS](https://github.com/alpinejs/alpine), [Tailwind CSS](https://tailwindcss.com/) and [leanix-reporting](https://leanix.github.io/leanix-reporting/) dependencies.
 
 ```javascript
+// src/index.js
 import 'alpinejs'
 import '@leanix/reporting'
 import 'tailwindcss/tailwind.css'
@@ -110,7 +112,7 @@ window.initializeContext = () => {
 And finally edit the *index.html* file as follows:
 
 ```html
-<!doctype  html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -145,7 +147,8 @@ If you decide to add a security exception to your localhost, make sure you open 
 <div  style="display:flex; justify-content:center">
   <img  src="https://i.imgur.com/5LoJVX0.png">
 </div>
-Nothing very exciting happens here... However we notice that our report loads, and triggers the *initializeReport* method as expected!
+
+Nothing very exciting happens here... However we notice that our report loads, and triggers the **initializeReport** method as expected!
 
 ## Report design
 We want to implement a matrix-layout report which will show a list of applications that exist in our workspace versus the start date of each corresponding lifecycle phase, if defined.
@@ -224,7 +227,7 @@ Your report should now be showing a list of application names and the current li
 
 Notice that this list is filterable, and it gets updated as soon as you set a new filtering criteria in the report facet.
 
-Altough the list looks interesting, it is not however the matrix-view we aim to implement. Our matrix will have as columns the application name, and the set of lifecycle phases defined in our workspace. As we don't know yet which set is this of lifecycle phases that are defined in our workspace, we'll have to fetch the information as a graphql query using the [lx.executeGraphQL](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html#executegraphql) method provided by the [leanix-reporting api](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html). We'll also fetch the color metadata defined for each lifecycle phase in our workspace.
+Altough the list looks interesting, it is not however the matrix-view we aim to implement. Our matrix will have as columns the application name, and the set of lifecycle phases defined in our workspace. As we don't know yet which lifecycle phases are set in our workspace data model, we'll have to fetch that information through a graphql query using the [lx.executeGraphQL](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html#executegraphql) method provided by the [leanix-reporting api](https://leanix.github.io/leanix-reporting/classes/lxr.lxcustomreportlib.html). We'll also fetch the color metadata defined for each lifecycle phase in our workspace.
 So edit our **index.js** file and add the **lifecyclePhases** state variable to the **state** object, and the **fetchLifecyclePhases** method to the **methods** object as ilustrated below:
 
 ```javascript
@@ -237,9 +240,7 @@ const state = {
 }
 
 const methods = {
-  async initializeReport () {
-    ...
-  },
+  async initializeReport () {...},
   async fetchLifecyclePhases () {
     const query = `
       {
@@ -275,7 +276,7 @@ const methods = {
       })
     this.lifecyclePhases = lifecyclePhases
     // we output the lifecyclePhases state variable to the console so that we can take a peek at the data
-    console.log('lifecycle phases', this.lifecyclePhases)
+    console.log('lifecycle phases', lifecyclePhases)
   }
 }
 ```
@@ -293,9 +294,9 @@ Afterwards we edit our **index.html** file so that the **fetchLifecyclePhases** 
 </body>
 ```
 
-Now launching the development server, and opening our browsers console, we can see the output of the **this.lifecyclePhases** state variable:
-<div  style="display:flex; justify-content:center">
-  <img  src="https://i.imgur.com/XRBIYSB.png">
+Now launching the development server, and opening our browsers console, we can see the output of the **lifecyclePhases** state variable:
+<div style="display:flex; justify-content:center">
+  <img src="https://i.imgur.com/XRBIYSB.png">
 </div>
 
 Success! We observed that the **fetchLifecyclePhases** method is indeed being triggered upon the loading of the report and, therefore, we have now the missing information for building our matrix-layout report columns.
@@ -479,7 +480,7 @@ In order to visualize our application lifecycle matrix all we need to do is to a
 </html>
 ```
 
-Now just run <code>npm start</code> to launch the development server again and contemplate the fruit of your labor!
+Now just run <code>npm start</code> and enjoy your matrix report!
 <div style="display:flex; justify-content:center">
   <img src="https://i.imgur.com/fMsb97O.png">
 </div>
