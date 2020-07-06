@@ -479,7 +479,7 @@ In order to visualize our application lifecycle matrix all we need to do is to a
 </html>
 ```
 
-Now just run <code>npm start</code> to launch the development server again and contemplate the fruits of your labor!
+Now just run <code>npm start</code> to launch the development server again and contemplate the fruit of your labor!
 <div style="display:flex; justify-content:center">
   <img src="https://i.imgur.com/fMsb97O.png">
 </div>
