@@ -416,7 +416,8 @@ const methods = {
   },
   computeRows () {...
   },
-  applicationClickEvtHandler ({ type, key: id }) {
+  applicationClickEvtHandler ({ type = null, key: id }) {
+    if (type === null) return
     const url = `${this.baseUrl}/factsheet/${type}/${id}`
     lx.openLink(url)
   }
