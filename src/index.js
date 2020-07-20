@@ -22,9 +22,16 @@ const methods = {
       facets: [
         {
           key: 1,
-          fixedFactSheetType: 'Application',
-          attributes: ['name', 'lifecycle {asString phases {phase startDate}}'],
-          callback: applications => { this.applications = applications }
+          // fixedFactSheetType: 'Application',
+          attributes: ['id', 'type', 'name'],
+          callback: dataset => {
+            console.log('DATASET', dataset)
+          },
+          // fixedFactSheetType: 'Application',
+          defaultFilters: [
+            // { facetKey: 'Subscriptions', operator: 'OR', keys: ['__me__'] }
+            { facetKey: 'FactSheetTypes', keys: ['Application'] }
+          ]
         }
       ]
     }
